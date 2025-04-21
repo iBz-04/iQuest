@@ -22,7 +22,7 @@ export default function Home() {
         {
           id: "0",
           role: "system",
-          content: `**Welcome to DegreeGuru**
+          content: `**Welcome to iQuest**
 
 Your companion for exploring Scholars4Dev, the platform for finding international scholarships.`,
         },

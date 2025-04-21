@@ -1,8 +1,8 @@
-# DegreeGuru
+# iQuest
 
 ## Build a RAG Chatbot using Vercel AI SDK, Langchain, Upstash Vector and OpenAI
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fupstash%2Fdegreeguru&env=UPSTASH_REDIS_REST_URL,UPSTASH_REDIS_REST_TOKEN,UPSTASH_VECTOR_REST_URL,UPSTASH_VECTOR_REST_TOKEN,OPENAI_API_KEY&demo-title=DegreeGuru%20Demo&demo-description=A%20Demo%20Showcasing%20the%20DegreeGuru%20App&demo-url=https%3A%2F%2Fdegreeguru.vercel.app%2F&demo-image=https%3A%2F%2Fupstash.com%2Ficons%2Ffavicon-32x32.png)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fupstash%2Fdegreeguru&env=UPSTASH_REDIS_REST_URL,UPSTASH_REDIS_REST_TOKEN,UPSTASH_VECTOR_REST_URL,UPSTASH_VECTOR_REST_TOKEN,OPENAI_API_KEY&demo-title=iQuest%20Demo&demo-description=A%20Demo%20Showcasing%20the%20iQuest%20App&demo-url=https%3A%2F%2Fdegreeguru.vercel.app%2F&demo-image=https%3A%2F%2Fupstash.com%2Ficons%2Ffavicon-32x32.png)
 
 ![overview](figs/overview.gif)
 
@@ -11,7 +11,7 @@
 >
 > The project is maintained and supported by the community. Upstash may contribute but does not officially support or assume responsibility for it.
 
-**DegreeGuru** is a project designed to teach you making your own AI RAG chatbot on any custom data. Some of our favorite features:
+**iQuest** is a project designed to teach you making your own AI RAG chatbot on any custom data. Some of our favorite features:
 
 - 🕷️ Built-in crawler that scrapes the website you point it to, automatically making this data available for the AI
 - ⚡ Fast answers using Upstash Vector and real-time data streaming
@@ -225,7 +225,7 @@ Visit `http://localhost:3000` to see your chatbot live in action!
 You can use this chatbot in two different modes:
 
 - Streaming Mode: model responses are streamed to the web application in real-time as the model generates them. Interaction with the app is more fluid.
-- Non-Streaming Mode: Model responses are shown to the user once entirely generated. In this mode, DegreeGuru can explicitly provide the URLs of the web pages it uses as context.
+- Non-Streaming Mode: Model responses are shown to the user once entirely generated. In this mode, iQuest can explicitly provide the URLs of the web pages it uses as context.
 
 <details>
 <summary>Changing streaming mode</summary>

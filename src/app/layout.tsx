@@ -6,8 +6,8 @@ import cx from "@/utils/cx";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "DegreeGuru",
-  description: "DegreeGuru ChatBot",
+  title: "iQuest",
+  description: "iQuest ChatBot",
 };
 
 export default function RootLayout({

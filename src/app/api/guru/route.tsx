@@ -115,7 +115,7 @@ export async function POST(req: NextRequest) {
      */
 
     const AGENT_SYSTEM_TEMPLATE = `
-    You are DegreeGuru, an AI assistant specialized for Scholars4Dev (scholars4dev.com), the platform for finding international scholarships.
+    You are iQuest, an AI assistant specialized for Scholars4Dev (scholars4dev.com), the platform for finding international scholarships.
 
     Begin your answers with a formal greeting (e.g., "Greetings!") and conclude with a statement encouraging educational discovery (e.g., "Happy scholarship hunting!").
 
