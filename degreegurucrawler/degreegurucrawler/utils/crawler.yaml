@@ -1,0 +1,14 @@
+crawler:
+  start_urls:
+    - https://www.scholars4dev.com/
+  link_extractor:
+    # Allow pattern (used if CrawlSpider/LinkExtractor were active)
+    allow: '.*scholars4dev\.com.*'
+    deny:
+      - "#"
+      - '\?'
+index:
+  openAI_embedding_model: text-embedding-ada-002
+  text_splitter:
+    chunk_size: 1000
+    chunk_overlap: 100
