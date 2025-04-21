@@ -1,15 +1,14 @@
 export const INITIAL_QUESTIONS = [
   {
-    content: "Are there resources for students interested in creative writing?",
+    content: "What scholarships are available for international students in 2025?",
   },
   {
-    content: "Are there courses on environmental sustainability?",
+    content: "Are there Masters degree scholarships listed?",
   },
   {
-    content:
-      "Are there any workshops or seminars on entrepreneurship for students?",
+    content: "Can you list some PhD scholarships in Europe?",
   },
   {
-    content: "What kinds of courses will I take as a philosophy major?",
+    content: "Show me scholarships with deadlines in May 2025.",
   },
 ];
