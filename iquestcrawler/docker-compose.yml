@@ -2,7 +2,7 @@ version: '3'
 
 services:
   my_service:
-    image: degreegurucrawler
+    image: iquestcrawler
     build:
       context: .
       dockerfile: Dockerfile
