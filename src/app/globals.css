@@ -78,3 +78,47 @@
 .typing-dot {
   @apply bg-gray-400 rounded-full h-2 w-2 mx-0.5 animate-pulse;
 }
+
+/* Tooltip styling */
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltip-content {
+  visibility: hidden;
+  width: 220px;
+  background-color: rgba(0, 0, 0, 0.9);
+  color: #f0f0f0;
+  text-align: center;
+  border-radius: 6px;
+  padding: 10px;
+  position: absolute;
+  z-index: 30;
+  top: 125%;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.2s, visibility 0.2s;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  border: 1px solid #333;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  pointer-events: none;
+}
+
+.tooltip .tooltip-content::after {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent rgba(0, 0, 0, 0.9) transparent;
+}
+
+.tooltip:hover .tooltip-content {
+  visibility: visible;
+  opacity: 1;
+}

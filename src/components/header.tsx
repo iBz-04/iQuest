@@ -1,5 +1,5 @@
 import React from 'react';
-import { IconSearch, IconBulb, IconInfoCircle } from '@tabler/icons-react';
+import { IconBulb, IconInfoCircle } from '@tabler/icons-react';
 
 const Header: React.FC = () => {
   return (
@@ -13,12 +13,18 @@ const Header: React.FC = () => {
         </div>
         
         <div className="flex items-center gap-2">
-          <button className="feedback-button" title="Search">
-            <IconSearch size={18} />
-          </button>
-          <button className="feedback-button" title="About">
-            <IconInfoCircle size={18} />
-          </button>
+          <div className="tooltip">
+            <button className="feedback-button" aria-label="About iQuest">
+              <IconInfoCircle size={18} />
+            </button>
+            <div className="tooltip-content">
+              <p className="font-medium mb-1">About iQuest</p>
+              <p className="text-xs text-gray-300">
+                iQuest helps you find international scholarships from Scholars4Dev. 
+                Ask questions about scholarships, deadlines, and eligibility requirements.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </header>
