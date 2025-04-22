@@ -3,25 +3,31 @@
 @tailwind utilities;
 
 @layer base {
+  /* Base HTML elements */
+  body {
+    background-color: #000000;
+    color: #e0e0e0;
+  }
+
   a,
   button {
     @apply transition;
   }
 
   a {
-    @apply text-emerald-700 underline
-        decoration-emerald-700/60 decoration-2
-        hover:decoration-emerald-700 hover:bg-emerald-200
-        outline-0 focus:ring-2 focus:ring-offset-1 focus:ring-emerald-500;
+    @apply text-gray-300 underline
+        decoration-gray-400/60 decoration-1
+        hover:decoration-gray-200 hover:bg-gray-800
+        outline-0 focus:ring-2 focus:ring-offset-1 focus:ring-gray-400;
   }
 
   ::selection {
-    @apply bg-emerald-200 text-emerald-950;
+    @apply bg-gray-700 text-gray-100;
   }
 
   button:focus,
   input:focus {
-    @apply outline-0 ring-2 ring-offset-1 ring-emerald-500 caret-emerald-500;
+    @apply outline-0 ring-2 ring-offset-1 ring-gray-400 caret-gray-300;
   }
 
   label,
@@ -40,4 +46,35 @@
   p {
     @apply text-pretty;
   }
+}
+
+/* Custom components */
+.glass-card {
+  background-color: rgba(10, 10, 10, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid #1a1a1a;
+  border-radius: 0.75rem;
+}
+
+.glass-nav {
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid #1a1a1a;
+}
+
+.message-user {
+  @apply rounded-br-sm;
+}
+
+.message-bot {
+  background-color: rgba(10, 10, 10, 0.6);
+  border-bottom-left-radius: 0.125rem;
+}
+
+.feedback-button {
+  @apply p-1.5 rounded-md text-gray-400 hover:text-gray-200 hover:bg-gray-800 transition-all;
+}
+
+.typing-dot {
+  @apply bg-gray-400 rounded-full h-2 w-2 mx-0.5 animate-pulse;
 }

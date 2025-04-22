@@ -1,23 +1,22 @@
-const PoweredBy = () => {
+import React from "react";
+import Link from "next/link";
+import UpstashLogo from "@/components/upstash-logo";
+
+const PoweredBy: React.FC = () => {
   return (
-    <p className="mt-4 text-xs md:text-sm text-gray-600 text-center">
-      This project is a prototype for a RAG chatbot. <br /> Built using{" "}
-      <a href="https://www.langchain.com/" target="_blank">
-        LangChain
-      </a>
-      ,{" "}
-      <a href="https://upstash.com" target="_blank">
-        Upstash Vector
-      </a>{" "}
-      and{" "}
-      <a href="https://sdk.vercel.ai" target="_blank">
-        Vercel AI SDK
-      </a>{" "}
-      ・{" "}
-      <a href="https://github.com/upstash/DegreeGuru" target="_blank">
-        Source Code
-      </a>
-    </p>
+    <div className="flex justify-center mt-3">
+      <div className="flex items-center gap-1 text-xs text-gray-500">
+        <span>Powered by</span>
+        <Link
+          href="https://github.com/upstash/DegreeGuru"
+          target="_blank"
+          className="flex items-center gap-1 decoration-transparent hover:decoration-transparent hover:text-gray-300 hover:bg-transparent"
+        >
+          <UpstashLogo size={14} />
+          <span>Upstash</span>
+        </Link>
+      </div>
+    </div>
   );
 };
 

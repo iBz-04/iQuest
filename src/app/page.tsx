@@ -61,7 +61,17 @@ Your companion for exploring Scholars4Dev, the platform for finding internationa
 
   return (
     <main className="relative max-w-screen-md p-4 md:p-6 mx-auto flex min-h-svh !pb-32 md:!pb-40 overflow-y-auto">
+      <div className="absolute top-0 left-0 right-0 z-[-1] h-64 bg-gradient-to-b from-black/30 via-transparent to-transparent"></div>
+
       <div className="w-full">
+        {/* Welcome message */}
+        {messages.length === 1 && (
+          <div className="mt-5 mb-8 text-center">
+            <h1 className="text-xl md:text-2xl font-bold text-gray-100 mb-2">Find Your Perfect Scholarship</h1>
+            <p className="text-gray-400 max-w-md mx-auto">Explore international scholarship opportunities from Scholars4Dev</p>
+          </div>
+        )}
+        
         {messages.map((message: MessageProps) => {
           return <Message key={message.id} {...message} />;
         })}
@@ -71,21 +81,37 @@ Your companion for exploring Scholars4Dev, the platform for finding internationa
 
         {/* initial question */}
         {messages.length === 1 && (
-          <div className="mt-4 md:mt-6 grid md:grid-cols-2 gap-2 md:gap-4">
+          <div className="mt-5 md:mt-7 grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
+            <h2 className="col-span-full text-sm font-medium text-gray-400 mb-1">Try asking about:</h2>
             {INITIAL_QUESTIONS.map((message) => {
               return (
                 <button
                   key={message.content}
                   type="button"
-                  className="cursor-pointer select-none text-left bg-white font-normal
-                  border border-gray-200 rounded-xl p-3 md:px-4 md:py-3
-                  hover:bg-zinc-50 hover:border-zinc-400"
+                  className="cursor-pointer select-none text-left glass-card font-normal
+                  p-3 md:px-4 md:py-3 hover:bg-gray-800/80 hover:border-gray-700
+                  transition-all duration-200"
                   onClick={() => onClickQuestion(message.content)}
                 >
                   {message.content}
                 </button>
               );
             })}
+            
+            <div className="col-span-full mt-8">
+              <h2 className="text-sm font-medium text-gray-400 mb-3">Popular topics:</h2>
+              <div className="flex flex-wrap gap-2">
+                {["PhD Scholarships", "Europe", "USA", "Australia", "Engineering", "Medical", "Full-Funded", "Women", "Summer 2025"].map(tag => (
+                  <button 
+                    key={tag}
+                    className="px-3 py-1.5 text-sm bg-black hover:bg-zinc-900 text-gray-300 rounded-full border border-zinc-800 transition-colors"
+                    onClick={() => onClickQuestion(`Tell me about ${tag} scholarships`)}
+                  >
+                    {tag}
+                  </button>
+                ))}
+              </div>
+            </div>
           </div>
         )}
 
@@ -97,15 +123,15 @@ Your companion for exploring Scholars4Dev, the platform for finding internationa
         className={cx(
           "fixed z-10 bottom-0 inset-x-0",
           "flex justify-center items-center",
-          "bg-white",
+          "bg-black/80 backdrop-blur-md",
         )}
       >
         <span
-          className="absolute bottom-full h-10 inset-x-0 from-white/0
-         bg-gradient-to-b to-white pointer-events-none"
+          className="absolute bottom-full h-20 inset-x-0 from-transparent
+         bg-gradient-to-b to-black pointer-events-none"
         />
 
-        <div className="w-full max-w-screen-md rounded-xl px-4 md:px-5 py-6">
+        <div className="w-full max-w-screen-md px-4 md:px-5 py-5">
           <Form
             ref={formRef}
             onSubmit={onSubmit}
@@ -119,7 +145,20 @@ Your companion for exploring Scholars4Dev, the platform for finding internationa
             }}
           />
 
-          <PoweredBy />
+          {messages.length > 1 && (
+            <div className="mt-4 flex justify-center">
+              <button 
+                className="px-3 py-1.5 text-sm bg-black hover:bg-zinc-900 text-gray-400 rounded-full border border-zinc-800 transition-colors"
+                onClick={() => window.location.reload()}
+              >
+                Start new chat
+              </button>
+            </div>
+          )}
+          
+          <div className="mt-3">
+            <PoweredBy />
+          </div>
         </div>
       </div>
     </main>
