@@ -1,10 +1,10 @@
 # iQuest
 
-## Open source rag scholarship chatbot
+## Open source rag scholarship chatbot and project starter kit
 
 ![overview](figs/iquest.gif)
 
-// Note: Screenshot shows the original DegreeGuru UI. This project has been updated to 'iQuest' with a dark theme.//
+
 
 **iQuest** is a project designed to make it easier to build your own rag bot or to give you a starting point for a more advanced bot
 - 🕷️ Built-in crawler that scrapes the website you point it to, automatically making this data available for the AI
@@ -44,14 +44,14 @@ This project contains two primary components: the crawler and the chatbot. First
 
 ![crawler-diagram](figs/diagram.png)
 
-The crawler is developed using Python, by [initializing a Scrapy project](https://docs.scrapy.org/en/latest/intro/tutorial.html#creating-a-project) and implementing a [custom spider](https://github.com/upstash/degreeguru/blob/master/iquestcrawler/iquestcrawler/spiders/configurable.py). The spider is equipped with [the `parse_page` function](https://github.com/upstash/degreeguru/blob/master/iquestcrawler/iquestcrawler/spiders/configurable.py#L42), invoked each time the spider visits a webpage. This callback function splits the text on the webpage into chunks, generates vector embeddings for each chunk, and upserts those vectors into your Upstash Vector Database. Each vector stored in our database includes the original text and website URL as metadata.
+The crawler is developed using Python, by [initializing a Scrapy project] and implementing a [custom spider]. The spider is equipped with [the `parse_page` function], invoked each time the spider visits a webpage. This callback function splits the text on the webpage into chunks, generates vector embeddings for each chunk, and upserts those vectors into your Upstash Vector Database. Each vector stored in our database includes the original text and website URL as metadata.
 
 </br>
 
 To run the crawler, follow these steps:
 
 > [!TIP]
-> If you have docker installed, you can skip the "Configure Environment Variables" and "Install Required Python Libraries" sections. Instead you can simply update the environment variables in [docker-compose.yml](https://github.com/upstash/DegreeGuru/blob/master/iquestcrawler/docker-compose.yml) and run `docker-compose up`. This will create a container running our crawler. Don't forget to configure the crawler as explained in the following sections!
+> If you have docker installed, you can skip the "Configure Environment Variables" and "Install Required Python Libraries" sections. Instead you can simply update the environment variables in [docker-compose.yml]and run `docker-compose up`. This will create a container running our crawler. Don't forget to configure the crawler as explained in the following sections!
 
 <details>
 
@@ -96,7 +96,7 @@ python3 -m venv venv
 source venv/bin/activate
 ```
 
-Finally, use [the `requirements.txt`](https://github.com/upstash/degreeguru/blob/master/iquestcrawler/requirements.txt) to install the required libraries:
+Finally, use [the `requirements.txt`] to install the required libraries:
 
 ```bash
 pip install -r requirements.txt
@@ -151,7 +151,7 @@ In the `index` section, there are two subsections:
 
 `settings.py` file has an important setting called `DEPTH_LIMIT` which determines how many consecutive links our spider can crawl. A high value lets our crawler visit the deepest corners of a website, taking longer to finish with possibly diminishing returns. A low value could end the crawl before extracting relevant information.
 
-If pages are skipped due to the `DEPTH_LIMIT`, Scrapy logs those skipped URLs for us. Because this usually causes a lot of logs, we've disabled this option in our project. If you'd like to keep it enabled, remove  [the `"scrapy.spidermiddlewares.depth"` from the `disable_loggers` in `iquestcrawler/spider/configurable.py` file](https://github.com/upstash/degreeguru/blob/master/iquestcrawler/iquestcrawler/spiders/configurable.py#L22).
+If pages are skipped due to the `DEPTH_LIMIT`, Scrapy logs those skipped URLs for us. Because this usually causes a lot of logs, we've disabled this option in our project. If you'd like to keep it enabled, remove  [the `"scrapy.spidermiddlewares.depth"` from the `disable_loggers` in `iquestcrawler/spider/configurable.py` file]
 
 </details>
 
@@ -216,22 +216,14 @@ You can use this chatbot in two different modes:
 <details>
 <summary>Changing streaming mode</summary>
 
-To turn streaming on/off, navigate to `src/app/route/guru` and open the `route.tsx` file. Setting [`returnIntermediateSteps`](https://github.com/upstash/degreeguru/blob/master/src/app/api/guru/route.tsx#L64) to `true` disables streaming, setting it to `false` enables streaming.
+To turn streaming on/off, navigate to `src/app/route/guru` and open the `route.tsx` file. Setting [`returnIntermediateSteps`] to `true` disables streaming, setting it to `false` enables streaming.
 
 </details>
 
-To customize the chatbot further, you can update the [AGENT_SYSTEM_TEMPLATE in your route.tsx file](https://github.com/upstash/DegreeGuru/blob/master/src/app/api/guru/route.tsx#L101) to better match your specific use case.
+To customize the chatbot further, you can update the `AGENT_SYSTEM_TEMPLATE in your route.tsx file` to better match your specific use case.
 
 </br>
 
-## Conclusion
+##
 
-Congratulations on setting up your own AI chatbot! We hope you learned a lot by following along and seeing how the different parts of this app, namely the crawler, vector database, and LLM, play together. A major focus in developing this project was on its user-friendly design and adaptable settings to make this project perfect for your use case.
-
-## Limitations
-
-The above implementation works great for a variety of use cases. There are a few limitations I'd like to mention:
-
-- Because the Upstash LangChain integration is a work-in-progress, the [`UpstashVectorStore`](https://github.com/upstash/degreeguru/blob/master/src/app/vectorstore/UpstashVectorStore.js) used with LangChain currently only implements the `similaritySearchVectorWithScore` method needed for our agent. Once we're done developing our native LangChain integration, we'll update this project accordingly.
-- When the non-streaming mode is enabled, the message history can cause an error after the user enters another query.
-- Our sources are available as URLs in the Upstash Vector Database, but we cannot show the sources explicitly when streaming. Instead, we provide the links to the chatbot as context and expect the bot to include the links in the response.
+Author: [`@iBz-04`](https://github.com/iBz-04)
