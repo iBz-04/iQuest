@@ -1,4 +1,4 @@
-# Scrapy settings for degreegurucrawler project
+# Scrapy settings for iquestcrawler project
 #
 # For simplicity, this file contains only settings considered important or
 # commonly used. You can find more settings consulting the documentation:
@@ -7,10 +7,10 @@
 #     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 
-BOT_NAME = "degreegurucrawler"
+BOT_NAME = "iquestcrawler"
 
-SPIDER_MODULES = ["degreegurucrawler.spiders"]
-NEWSPIDER_MODULE = "degreegurucrawler.spiders"
+SPIDER_MODULES = ["iquestcrawler.spiders"]
+NEWSPIDER_MODULE = "iquestcrawler.spiders"
 
 DEPTH_LIMIT = 0
 
@@ -46,13 +46,13 @@ ROBOTSTXT_OBEY = False
 # Enable or disable spider middlewares
 # See https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 #SPIDER_MIDDLEWARES = {
-#    "degreegurucrawler.middlewares.DegreegurucrawlerSpiderMiddleware": 543,
+#    "iquestcrawler.middlewares.IquestcrawlerSpiderMiddleware": 543,
 #}
 
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #DOWNLOADER_MIDDLEWARES = {
-#    "degreegurucrawler.middlewares.DegreegurucrawlerDownloaderMiddleware": 543,
+#    "iquestcrawler.middlewares.IquestcrawlerDownloaderMiddleware": 543,
 #}
 
 # Enable or disable extensions
@@ -64,7 +64,7 @@ ROBOTSTXT_OBEY = False
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 #ITEM_PIPELINES = {
-#    "degreegurucrawler.pipelines.DegreegurucrawlerPipeline": 300,
+#    "iquestcrawler.pipelines.IquestcrawlerPipeline": 300,
 #}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
@@ -107,7 +107,7 @@ DOWNLOAD_HANDLERS = {
 # Enable or disable spider middlewares
 # See https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 # SPIDER_MIDDLEWARES = {
-#    "degreegurucrawler.middlewares.DegreegurucrawlerSpiderMiddleware": 543,
+#    "iquestcrawler.middlewares.IquestcrawlerSpiderMiddleware": 543,
 # }
 
 # Set settings whose default value is deprecated to a future-proof value

@@ -1,21 +1,12 @@
 # iQuest
 
-## Build a RAG Chatbot using Vercel AI SDK, Langchain, Upstash Vector and OpenAI
+## Open source rag scholarship chatbot
 
-# Note: The Deploy button links to the original DegreeGuru template.
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fupstash%2Fdegreeguru&env=UPSTASH_REDIS_REST_URL,UPSTASH_REDIS_REST_TOKEN,UPSTASH_VECTOR_REST_URL,UPSTASH_VECTOR_REST_TOKEN,OPENAI_API_KEY&demo-title=iQuest%20Demo&demo-description=A%20Demo%20Showcasing%20the%20iQuest%20App&demo-url=https%3A%2F%2Fdegreeguru.vercel.app%2F&demo-image=https%3A%2F%2Fupstash.com%2Ficons%2Ffavicon-32x32.png)
-
-![overview](figs/overview.gif)
+![overview](figs/iquest.gif)
 
 // Note: Screenshot shows the original DegreeGuru UI. This project has been updated to 'iQuest' with a dark theme.//
 
-> [!NOTE]  
-> **This project is a Community Project.**
->
-> The project is maintained and supported by the community. Upstash may contribute but does not officially support or assume responsibility for it.
-
-**iQuest** is a project designed to teach you making your own AI RAG chatbot on any custom data. Some of our favorite features:
-
+**iQuest** is a project designed to make it easier to build your own rag bot or to give you a starting point for a more advanced bot
 - 🕷️ Built-in crawler that scrapes the website you point it to, automatically making this data available for the AI
 - ⚡ Fast answers using Upstash Vector and real-time data streaming
 - 🛡️ Includes rate limiting to prevent API abuse
@@ -45,26 +36,22 @@ This chatbot is configured by default to crawl [Scholars4Dev](https://www.schola
 
 ## Quickstart
 
-For local development, we recommend forking this project and cloning the forked repository to your local machine by running the following command:
-
-```
-git clone git@github.com:[YOUR_GITHUB_ACCOUNT]/DegreeGuru.git
-```
+For local development, we recommend forking this project and cloning the forked repository to your local machine
 
 This project contains two primary components: the crawler and the chatbot. First, we'll take a look at how the crawler extracts information from any website you point it to. This data is automatically stored in an Upstash Vector database. If you already have a vector database available, the crawling stage can be skipped.
 
 ### Step 1: Crawler
 
-![crawler-diagram](figs/how-this-project-works.png)
+![crawler-diagram](figs/diagram.png)
 
-The crawler is developed using Python, by [initializing a Scrapy project](https://docs.scrapy.org/en/latest/intro/tutorial.html#creating-a-project) and implementing a [custom spider](https://github.com/upstash/degreeguru/blob/master/degreegurucrawler/degreegurucrawler/spiders/configurable.py). The spider is equipped with [the `parse_page` function](https://github.com/upstash/degreeguru/blob/master/degreegurucrawler/degreegurucrawler/spiders/configurable.py#L42), invoked each time the spider visits a webpage. This callback function splits the text on the webpage into chunks, generates vector embeddings for each chunk, and upserts those vectors into your Upstash Vector Database. Each vector stored in our database includes the original text and website URL as metadata.
+The crawler is developed using Python, by [initializing a Scrapy project](https://docs.scrapy.org/en/latest/intro/tutorial.html#creating-a-project) and implementing a [custom spider](https://github.com/upstash/degreeguru/blob/master/iquestcrawler/iquestcrawler/spiders/configurable.py). The spider is equipped with [the `parse_page` function](https://github.com/upstash/degreeguru/blob/master/iquestcrawler/iquestcrawler/spiders/configurable.py#L42), invoked each time the spider visits a webpage. This callback function splits the text on the webpage into chunks, generates vector embeddings for each chunk, and upserts those vectors into your Upstash Vector Database. Each vector stored in our database includes the original text and website URL as metadata.
 
 </br>
 
 To run the crawler, follow these steps:
 
 > [!TIP]
-> If you have docker installed, you can skip the "Configure Environment Variables" and "Install Required Python Libraries" sections. Instead you can simply update the environment variables in [docker-compose.yml](https://github.com/upstash/DegreeGuru/blob/master/degreegurucrawler/docker-compose.yml) and run `docker-compose up`. This will create a container running our crawler. Don't forget to configure the crawler as explained in the following sections!
+> If you have docker installed, you can skip the "Configure Environment Variables" and "Install Required Python Libraries" sections. Instead you can simply update the environment variables in [docker-compose.yml](https://github.com/upstash/DegreeGuru/blob/master/iquestcrawler/docker-compose.yml) and run `docker-compose up`. This will create a container running our crawler. Don't forget to configure the crawler as explained in the following sections!
 
 <details>
 
@@ -91,7 +78,7 @@ OPENAI_API_KEY=****
 <details>
 <summary>Install Required Python Libraries</summary>
 
-To install the libraries, we suggest setting up a virtual Python environment. Before starting the installation, navigate to the `degreegurucrawler` directory.
+To install the libraries, we suggest setting up a virtual Python environment. Before starting the installation, navigate to the `iquestcrawler` directory.
 
 To setup a virtual environment, first install `virtualenv` package:
 
@@ -109,7 +96,7 @@ python3 -m venv venv
 source venv/bin/activate
 ```
 
-Finally, use [the `requirements.txt`](https://github.com/upstash/degreeguru/blob/master/degreegurucrawler/requirements.txt) to install the required libraries:
+Finally, use [the `requirements.txt`](https://github.com/upstash/degreeguru/blob/master/iquestcrawler/requirements.txt) to install the required libraries:
 
 ```bash
 pip install -r requirements.txt
@@ -121,7 +108,7 @@ pip install -r requirements.txt
 
 </br>
 
-After setting these environment variables, we are almost ready to run the crawler. The subsequent step involves configuring the crawler itself, primarily accomplished through the `crawler.yaml` file located in the `degreegurucrawler/utils` directory. Additionally, it is imperative to address a crucial setting within the `settings.py` file.
+After setting these environment variables, we are almost ready to run the crawler. The subsequent step involves configuring the crawler itself, primarily accomplished through the `crawler.yaml` file located in the `iquestcrawler/utils` directory. Additionally, it is imperative to address a crucial setting within the `settings.py` file.
 
 <details>
 <summary>Configuring the crawler in `crawler.yaml`</summary>
@@ -164,7 +151,7 @@ In the `index` section, there are two subsections:
 
 `settings.py` file has an important setting called `DEPTH_LIMIT` which determines how many consecutive links our spider can crawl. A high value lets our crawler visit the deepest corners of a website, taking longer to finish with possibly diminishing returns. A low value could end the crawl before extracting relevant information.
 
-If pages are skipped due to the `DEPTH_LIMIT`, Scrapy logs those skipped URLs for us. Because this usually causes a lot of logs, we've disabled this option in our project. If you'd like to keep it enabled, remove  [the `"scrapy.spidermiddlewares.depth"` from the `disable_loggers` in `degreegurucrawler/spider/configurable.py` file](https://github.com/upstash/degreeguru/blob/master/degreegurucrawler/degreegurucrawler/spiders/configurable.py#L22).
+If pages are skipped due to the `DEPTH_LIMIT`, Scrapy logs those skipped URLs for us. Because this usually causes a lot of logs, we've disabled this option in our project. If you'd like to keep it enabled, remove  [the `"scrapy.spidermiddlewares.depth"` from the `disable_loggers` in `iquestcrawler/spider/configurable.py` file](https://github.com/upstash/degreeguru/blob/master/iquestcrawler/iquestcrawler/spiders/configurable.py#L22).
 
 </details>
 
@@ -173,23 +160,23 @@ If pages are skipped due to the `DEPTH_LIMIT`, Scrapy logs those skipped URLs fo
 That's it! 🎉 We've configured our crawler and are ready to run it using the following command:
 
 ```
-scrapy crawl configurable --logfile degreegurucrawl.log
+scrapy crawl configurable --logfile iquestcrawl.log
 ```
 
-Note that running this might take time. You can monitor the progress by looking at the log file `degreegurucrawl.log` or the metrics of your Upstash Vector Database dashboard as shown below.
+Note that running this might take time. You can monitor the progress by looking at the log file `iquestcrawl.log` or the metrics of your Upstash Vector Database dashboard as shown below.
 
-![vector-db](figs/vector-db.png)
+
 
 > [!TIP]
-> If you want to do a dry run (without creating embeddings or a vector database), simply comment out [the line where we pass the `callback` parameter to the `Rule` object in `ConfigurableSpider`](https://github.com/upstash/degreeguru/blob/master/degreegurucrawler/degreegurucrawler/spiders/configurable.py#L38)
+> If you want to do a dry run (without creating embeddings or a vector database), simply comment out [the line where we pass the `callback` parameter to the `Rule` object in `ConfigurableSpider`]
 
 ### Step 2: Chatbot
 
 In this section, we'll explore how to chat with the data we've just crawled and stored in our vector database. Here's an overview of what this will look like architecturally:
 
-![chatbot-diagram](figs/infrastructure.png)
+![chatbot-diagram](figs/overview.png)
 
-Before we can run the chatbot locally, we need to set the environment variables as shown in the [`.env.local.example`](https://github.com/upstash/degreeguru/blob/master/.env.local.example) file. Rename this file and remove the `.example` ending, leaving us with `.env.local`. 
+Before we can run the chatbot locally, we need to set the environment variables as shown in the [`.env.local.example`]file. Rename this file and remove the `.example` ending, leaving us with `.env.local`. 
 
 Your `.env.local` file should look like this:
 ```
@@ -207,11 +194,7 @@ OPENAI_API_KEY=
 
 The first four variables are provided by Upstash, you can visit the commented links for the place to retrieve these tokens. You can find the vector database tokens here:
 
-![vector-db-read-only](figs/vector-db-read-only.png)
-
 The `UPSTASH_REDIS_REST_URL` and `UPSTASH_REDIS_REST_TOKEN` are needed for rate-limiting based on IP address. In order to get these secrets, go to Upstash dashboard and create a Redis database.
-
-![redis-create](figs/redis-create.png)
 
 Finally, set the `OPENAI_API_KEY` environment variable you can get [here](https://platform.openai.com/api-keys) which allows us to vectorize user queries and generate responses.
 

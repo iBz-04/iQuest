@@ -8,6 +8,6 @@
 from itemadapter import ItemAdapter
 
 
-class DegreegurucrawlerPipeline:
+class IquestcrawlerPipeline:
     def process_item(self, item, spider):
         return item
