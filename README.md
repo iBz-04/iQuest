@@ -2,9 +2,12 @@
 
 ## Build a RAG Chatbot using Vercel AI SDK, Langchain, Upstash Vector and OpenAI
 
+# Note: The Deploy button links to the original DegreeGuru template.
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fupstash%2Fdegreeguru&env=UPSTASH_REDIS_REST_URL,UPSTASH_REDIS_REST_TOKEN,UPSTASH_VECTOR_REST_URL,UPSTASH_VECTOR_REST_TOKEN,OPENAI_API_KEY&demo-title=iQuest%20Demo&demo-description=A%20Demo%20Showcasing%20the%20iQuest%20App&demo-url=https%3A%2F%2Fdegreeguru.vercel.app%2F&demo-image=https%3A%2F%2Fupstash.com%2Ficons%2Ffavicon-32x32.png)
 
 ![overview](figs/overview.gif)
+
+// Note: Screenshot shows the original DegreeGuru UI. This project has been updated to 'iQuest' with a dark theme.//
 
 > [!NOTE]  
 > **This project is a Community Project.**
@@ -16,8 +19,9 @@
 - 🕷️ Built-in crawler that scrapes the website you point it to, automatically making this data available for the AI
 - ⚡ Fast answers using Upstash Vector and real-time data streaming
 - 🛡️ Includes rate limiting to prevent API abuse
+- 🎨 Modern dark theme UI with interactive elements
 
-This chatbot is trained on data from Stanford University as an example, but is totally domain agnostic. We've created this project so you can turn it into a chatbot with your very own data by simply modifying the `crawler.yaml` file.  
+This chatbot is configured by default to crawl [Scholars4Dev](https://www.scholars4dev.com/), a site for international scholarships, but is totally domain agnostic. We've created this project so you can turn it into a chatbot with your very own data by simply modifying the `crawler.yaml` file.  
 
 ## Overview
 
@@ -122,18 +126,17 @@ After setting these environment variables, we are almost ready to run the crawle
 <details>
 <summary>Configuring the crawler in `crawler.yaml`</summary>
 
-The crawler.yaml has two main sections: `crawler` and `index`:
+The `crawler.yaml` file has two main sections: `crawler` and `index`. By default, it's configured for `scholars4dev.com`:
 
 ```yaml
 crawler:
   start_urls:
-    - https://www.some.domain.com
+    - https://www.scholars4dev.com/
   link_extractor:
-    allow: '.*some\.domain.*'
+    allow: '.*scholars4dev\\.com.*' # Regex pattern to allow URLs
     deny:
       - "#"
       - '\?'
-      - about
 index:
   openAI_embedding_model: text-embedding-ada-002
   text_splitter:
@@ -146,7 +149,7 @@ In the `crawler` section, there are two subsections:
 - `start_urls`: the entrypoints our crawler will start searching from
 - `link_extractor`: a dictionary passed as arguments to [`scrapy.linkextractors.LinkExtractor`](https://docs.scrapy.org/en/latest/topics/link-extractors.html). Some important parameters are:
   - `allow`: Only extracts links matching the given regex(s)
-  - `allow_domains`: Only extract links matching the given domain(s)
+  - `allow_domains`: (Not shown, but can be added) Only extract links matching the given domain(s)
   - `deny`: Deny links matching the given regex(s)
 
 In the `index` section, there are two subsections:
