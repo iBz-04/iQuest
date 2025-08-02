@@ -75,15 +75,15 @@ export async function POST(req: NextRequest) {
       temperature: 0.2,
       // IMPORTANT: Must "streaming: true" on OpenAI to enable final output streaming below.
       streaming: true,
-    }, {
-      apiKey: process.env.OPENAI_API_KEY,
-      organization: process.env.OPENAI_ORGANIZATION
+      openAIApiKey: process.env.OPENAI_API_KEY,
     });
 
     /**
      * Create vector store and retriever
      */
-    const vectorstore = await new UpstashVectorStore(new OpenAIEmbeddings());
+    const vectorstore = await new UpstashVectorStore(new OpenAIEmbeddings({
+      openAIApiKey: process.env.OPENAI_API_KEY,
+    }));
     const retriever = vectorstore.asRetriever(
       {
         k: 6,
