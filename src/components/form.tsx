@@ -16,7 +16,7 @@ const Form = ({ inputProps, buttonProps, onSubmit }: Props, ref: any) => {
     >
       <div className="glass-card w-full flex items-center relative">
         <input
-          placeholder="Ask about scholarships..."
+          placeholder="buraya yazın..."
           required
           {...inputProps}
           className={cx(
