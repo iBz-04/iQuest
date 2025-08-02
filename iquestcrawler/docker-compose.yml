@@ -7,6 +7,6 @@ services:
       context: .
       dockerfile: Dockerfile
     environment:
-      - UPSTASH_VECTOR_REST_URL=**
-      - UPSTASH_VECTOR_REST_TOKEN=**
-      - OPENAI_API_KEY=**
+      - UPSTASH_VECTOR_REST_URL=https://top-insect-60020-eu1-vector.upstash.io
+      - UPSTASH_VECTOR_REST_TOKEN=ABQFMHRvcC1pbnNlY3QtNjAwMjAtZXUxYWRtaW5ZekprWTJNek5UZ3RPREV4T1MwMFlURXhMVGt3T1dJdE5XWXhaakF3TTJRME5EWms=
+      - OPENAI_API_KEY=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

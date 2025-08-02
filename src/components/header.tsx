@@ -18,10 +18,11 @@ const Header: React.FC = () => {
               <IconInfoCircle size={18} />
             </button>
             <div className="tooltip-content">
-              <p className="font-medium mb-1">About iQuest</p>
+              <p className="font-medium mb-1">iQuest Hakkında</p>
               <p className="text-xs text-gray-300">
-                iQuest helps you find international scholarships from Scholars4Dev. 
-                Ask questions about scholarships, deadlines, and eligibility requirements.
+                iQuest, İslam ve İhsan&apos;dan alınan bilgilerle İslami konularda 
+                rehberlik eden akıllı asistanınızdır. Namaz, dua, ahlak ve daha birçok 
+                İslami konu hakkında sorular sorabilirsiniz.
               </p>
             </div>
           </div>

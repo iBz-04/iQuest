@@ -1,14 +1,14 @@
 export const INITIAL_QUESTIONS = [
   {
-    content: "What scholarships are available for international students in 2025?",
+    content: "Namaz nasıl kılınır ve kaç rekâttır?",
   },
   {
-    content: "Are there Masters degree scholarships listed?",
+    content: "İslam'da şükrün önemi nedir?",
   },
   {
-    content: "Can you list some PhD scholarships in Europe?",
+    content: "Cuma namazının farzları nelerdir?",
   },
   {
-    content: "Show me scholarships with deadlines in May 2025.",
+    content: "Güzel ahlak nasıl edinilir?",
   },
 ];

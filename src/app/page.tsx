@@ -22,9 +22,9 @@ export default function Home() {
         {
           id: "0",
           role: "system",
-          content: `**Welcome to iQuest**
+          content: `**Hoş geldiniz - Welcome to iQuest**
 
-Your companion for exploring Scholars4Dev, the platform for finding international scholarships.`,
+İslam ve İhsan'dan bilgilerle zenginleştirilmiş, İslami konularda size rehberlik eden akıllı asistanınız.`,
         },
       ],
       onResponse: () => {
@@ -67,8 +67,8 @@ Your companion for exploring Scholars4Dev, the platform for finding internationa
         {/* Welcome message */}
         {messages.length === 1 && (
           <div className="mt-5 mb-8 text-center">
-            <h1 className="text-xl md:text-2xl font-bold text-gray-100 mb-2">Find Your Perfect Scholarship</h1>
-            <p className="text-gray-400 max-w-md mx-auto">Explore international scholarship opportunities from Scholars4Dev</p>
+            <h1 className="text-xl md:text-2xl font-bold text-gray-100 mb-2">İslami Rehberlik ve Bilgi</h1>
+            <p className="text-gray-400 max-w-md mx-auto">İslam ve İhsan&apos;dan İslami konularda bilgiler ve rehberlik</p>
           </div>
         )}
         
@@ -82,7 +82,7 @@ Your companion for exploring Scholars4Dev, the platform for finding internationa
         {/* initial question */}
         {messages.length === 1 && (
           <div className="mt-5 md:mt-7 grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
-            <h2 className="col-span-full text-sm font-medium text-gray-400 mb-1">Try asking about:</h2>
+            <h2 className="col-span-full text-sm font-medium text-gray-400 mb-1">Sormak istediğiniz konular:</h2>
             {INITIAL_QUESTIONS.map((message) => {
               return (
                 <button
@@ -99,13 +99,13 @@ Your companion for exploring Scholars4Dev, the platform for finding internationa
             })}
             
             <div className="col-span-full mt-8">
-              <h2 className="text-sm font-medium text-gray-400 mb-3">Popular topics:</h2>
+              <h2 className="text-sm font-medium text-gray-400 mb-3">Popüler konular:</h2>
               <div className="flex flex-wrap gap-2">
-                {["PhD Scholarships", "Europe", "USA", "Australia", "Engineering", "Medical", "Full-Funded", "Women", "Summer 2025"].map(tag => (
+                {["Namaz", "Dua", "İbadet", "Ahlak", "Hadis", "Kuran", "Fıkıh", "Tarikat", "İslam Tarihi"].map(tag => (
                   <button 
                     key={tag}
                     className="px-3 py-1.5 text-sm bg-black hover:bg-zinc-900 text-gray-300 rounded-full border border-zinc-800 transition-colors"
-                    onClick={() => onClickQuestion(`Tell me about ${tag} scholarships`)}
+                    onClick={() => onClickQuestion(`${tag} hakkında bilgi ver`)}
                   >
                     {tag}
                   </button>
@@ -151,7 +151,7 @@ Your companion for exploring Scholars4Dev, the platform for finding internationa
                 className="px-3 py-1.5 text-sm bg-black hover:bg-zinc-900 text-gray-400 rounded-full border border-zinc-800 transition-colors"
                 onClick={() => window.location.reload()}
               >
-                Start new chat
+                Yeni sohbet başlat
               </button>
             </div>
           )}

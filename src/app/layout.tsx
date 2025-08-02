@@ -7,8 +7,8 @@ import Header from "@/components/header";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "iQuest",
-  description: "iQuest ChatBot",
+  title: "iQuest - İslami Rehberlik",
+  description: "İslam ve İhsan'dan İslami konularda rehberlik eden akıllı asistan",
 };
 
 export default function RootLayout({
