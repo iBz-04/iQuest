@@ -1,9 +1,9 @@
 crawler:
   start_urls:
-    - https://www.scholars4dev.com/
+    - https://www.islamveihsan.com/
   link_extractor:
     # Allow pattern (used if CrawlSpider/LinkExtractor were active)
-    allow: '.*scholars4dev\.com.*'
+    allow: '.*islamveihsan\.com.*'
     deny:
       - "#"
       - '\?'
