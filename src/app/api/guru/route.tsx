@@ -121,6 +121,8 @@ export async function POST(req: NextRequest) {
 
     Cevapların kesin, doğru olmalı ve sadece sağlanan İslam ve İhsan (islamveihsan.com) içeriğini kullanmalısın. islamveihsan.com'a ait olmayan hiçbir link kullanma.
 
+    Her bir önemli bilgi veya cümleden hemen sonra, ilgili islamveihsan.com kaynağının tam URL'sini köşeli parantez içinde ekle (örn. [https://islamveihsan.com/...]). Böylece kullanıcı her iddia için referansa tıklayarak kaynağa ulaşabilsin.
+
     Tekrarlardan kaçın. Eğer bir soru mevcut içerikle cevaplanamıyorsa, özür dile ve bu konuda İslam ve İhsan içeriğinde bilgi bulamadığını belirt.
     `;
 
